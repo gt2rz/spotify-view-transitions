@@ -1,0 +1,37 @@
+---
+import Time from "@/icons/Time.astro";
+import { type Song } from "@/lib/data";
+
+interface Props {
+  song: Song;
+}
+
+const { songs } = Astro.props;
+---
+
+<table class="table-auto text-left min-w-full divide-y-2 divide-gray-500/50">
+  <thead class="">
+    <tr class="text-gray-300 text-sm font-light">
+      <th class="px-4 py-2">#</th>
+      <th class="px-4 py-2">Título</th>
+      <th class="px-4 py-2">Álbum</th>
+      <th class="px-4 py-2">Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {
+      songs.map((song) => (
+        <tr class="text-gray-300 text-sm font-light">
+          <td class="px-4 py-2">{song.track}</td>
+          <td class="px-4 py-2">{song.title}</td>
+          <td class="px-4 py-2">{song.album}</td>
+          <td class="px-4 py-2 flex items-center">
+            <Time class="w-4 h-4 mr-2" />
+            {song.time}
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
